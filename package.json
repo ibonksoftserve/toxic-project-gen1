@@ -1,0 +1,19 @@
+{
+  "name": "toxic-project-gen1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Here should be VERY important script\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibonksoftserve/toxic-project-gen1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibonksoftserve/toxic-project-gen1/issues"
+  },
+  "homepage": "https://github.com/ibonksoftserve/toxic-project-gen1#readme"
+}

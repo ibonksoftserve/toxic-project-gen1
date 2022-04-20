@@ -1,0 +1,190 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/jsx-runtime"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks"
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
+    "rules": {
+        "react/no-unused-class-component-methods": "error",
+        "react/jsx-uses-react": "error",
+        "react/no-array-index-key": "error",
+        "react/jsx-uses-vars": "error",
+        "react/jsx-pascal-case": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react/no-this-in-sfc": "error",
+        "react/no-children-prop": "error",
+        "react/no-deprecated": "warn",
+        "react/no-invalid-html-attribute": "warn",
+        "react/style-prop-object": "warn",
+        "react/jsx-closing-tag-location": "warn",
+        "react/jsx-curly-spacing": "warn",
+        "react/jsx-equals-spacing": "warn",
+        "react/jsx-handler-names": "warn",
+        "react/jsx-no-comment-textnodes": "warn",
+        "react/jsx-props-no-multi-spaces": "warn",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-indent-props": "warn",
+        "react/jsx-wrap-multilines": [
+            "warn",
+            {
+                "declaration": "parens-new-line",
+                "assignment": "parens-new-line",
+                "return": "parens-new-line",
+                "arrow": "parens-new-line",
+                "condition": "parens-new-line",
+                "logical": "ignore",
+                "prop": "parens-new-line"
+            }
+        ],
+        "react/jsx-tag-spacing": [
+            "warn", 
+            {
+                "closingSlash": "never",
+                "beforeSelfClosing": "always",
+                "afterOpening": "never",
+                "beforeClosing": "allow"
+            }
+        ],
+        "react/jsx-sort-props": [
+            "warn", 
+            {
+                "callbacksLast": false,
+                "shorthandFirst": false,
+                "shorthandLast": true,
+                "multiline": "last",
+                "ignoreCase": true,
+                "noSortAlphabetically": false,
+                "reservedFirst": true,
+                "locale": "auto"
+            }
+        ],
+        "react/jsx-sort-default-props": [
+            "warn", 
+            {
+                "ignoreCase": false
+            }
+        ],
+        "react/jsx-indent": [
+            "warn", 
+            2
+        ],
+        "react/jsx-curly-newline": [
+            "warn", 
+            {
+                "multiline": "require",
+                "singleline": "consistent"
+            }
+        ],
+        "react/jsx-one-expression-per-line": [
+            "warn", 
+            { 
+                "allow": "single-child"
+            }
+        ],
+        "react/jsx-no-undef": [
+            "error",
+            { 
+                "allowGlobals": false 
+            }
+        ],
+        "react/jsx-no-duplicate-props": [
+            "error", 
+            { 
+                "ignoreCase": false
+            }
+        ],
+        
+        "react/jsx-filename-extension": [
+            "error", 
+            { 
+                "extensions": [".tsx", ".ts"] //extend list if you need [".tsx", ".jsx"]
+            }
+        ],
+        "react/self-closing-comp": [
+            "error", 
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "react/no-multi-comp": [
+            "error", 
+            { 
+                "ignoreStateless": true 
+            }
+        ],
+        "react/boolean-prop-naming": [
+            "error", 
+            { 
+                "rule": "^(is|has)[A-Z]([A-Za-z0-9]?)+" 
+            }
+        ],
+        "react/function-component-definition": [
+            "error", 
+            {
+                "namedComponents": "function-declaration",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "react/jsx-first-prop-new-line": [
+            "warn",
+            "multiline"
+        ],
+        "react/jsx-closing-bracket-location": [
+            "warn",
+            "tag-aligned"
+        ],
+        "comma-dangle": [
+            "warn", 
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "functions": "never"
+            }
+        ],
+        "indent": [
+            "warn",
+            2
+        ],
+        "linebreak-style": [
+            "warn",
+            "unix"
+        ],
+        "quotes": [
+            "warn",
+            "single"
+        ],
+        "semi": [
+            "warn",
+            "always"
+        ]
+    }
+}

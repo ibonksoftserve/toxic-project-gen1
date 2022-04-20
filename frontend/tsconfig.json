@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,9 +18,27 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "declaration":false,
+    "noLib":false,
+    "emitDecoratorMetadata":true,
+    "experimentalDecorators":true,
+    "sourceMap":true,
+    "pretty":true,
+    "allowUnreachableCode":true,
+    "allowUnusedLabels":true,
+    "noImplicitAny":true,
+    "noImplicitReturns":false,
+    "noImplicitUseStrict":false,
+    "outDir":"dist/",
+    "listFiles":false,
+    "noEmitHelpers":true,
+    "baseUrl": "src/",
   },
   "include": [
-    "src"
-  ]
+    "src/**/*"
+  ],
+  "exclude":[ 
+    "node_modules"
+ ],
 }

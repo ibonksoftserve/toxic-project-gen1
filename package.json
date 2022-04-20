@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Here should be VERY important script\" && exit 1"
+    "docker-rebuild:frontend": "docker-compose -f docker-compose.dev.yml rm -fsv frontend && docker-compose -f docker-compose.dev.yml build --no-cache frontend",
+    "docker-start:frontend": "docker-compose -f docker-compose.dev.yml up",
+    "docker-start:dev": "npm run docker-start:frontend"
   },
   "repository": {
     "type": "git",

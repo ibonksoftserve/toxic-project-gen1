@@ -12,3 +12,27 @@ services:
       - ./frontend:/app
     ports:
       - 3000:3000
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    ports:
+      - 3001:3001
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+
+  mongo:
+    build:
+      context: ./backend/mongo
+      dockerfile: dev.mongo.Dockerfile
+    ports:
+      - 27019:27017
+    extra_hosts:
+      - mongo:127.0.0.1
+    logging:
+      driver: none
+    command: mongod --replSet rsg3

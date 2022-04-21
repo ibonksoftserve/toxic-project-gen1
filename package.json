@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "docker-rebuild": "docker-compose -f docker-compose.dev.yml rm && docker-compose -f docker-compose.dev.yml build",
     "docker-rebuild:frontend": "docker-compose -f docker-compose.dev.yml rm -fsv frontend && docker-compose -f docker-compose.dev.yml build --no-cache frontend",
-    "docker-start:frontend": "docker-compose -f docker-compose.dev.yml up",
-    "docker-start:dev": "npm run docker-start:frontend"
+    "docker-rebuild:backend": "docker-compose -f docker-compose.dev.yml rm -fsv backend && docker-compose -f docker-compose.dev.yml build --no-cache backend",
+    "docker-start:frontend": "docker-compose -f docker-compose.dev.yml up frontend",
+    "docker-start:backend": "docker-compose -f docker-compose.dev.yml up backend",
+    "docker-start:dev": "docker-compose -f docker-compose.dev.yml up"
   },
   "repository": {
     "type": "git",

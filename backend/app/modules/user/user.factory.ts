@@ -3,6 +3,6 @@ import { UserModel } from "./user.model";
 import { UserService } from "./user.service";
 
 
-export const getController = () => {
+export default () => {
   return new UserController({ UserService: new UserService({ UserModel }) });
 }

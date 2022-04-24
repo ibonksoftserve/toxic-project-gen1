@@ -40,22 +40,22 @@ export class UserController {
   }
 
   public async updateUser(req: Request, res: Response): Promise<Response> {
-    const body = req.body;
     const { id } = req.params;
-    const user = await this.UserService.updateUser(id, body);
+    const body = req.body;
+    const updatedUser = await this.UserService.updateUser(id, body);
 
-    if (!user) {
+    if (!updatedUser || !updatedUser.matchedCount) {
       throw new NotFoundError('user');
     }
 
-    return new SuccessResponse<UpdateResult>(user).send(res)
+    return new SuccessResponse<UpdateResult>(updatedUser).send(res)
   }
 
   public async deleteUser(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const deletedUser = await this.UserService.deleteUser(id);
 
-    if (!deletedUser) {
+    if (!deletedUser || !deletedUser.deletedCount) {
       throw new NotFoundError('user');
     }
 

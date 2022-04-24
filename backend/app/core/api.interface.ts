@@ -36,5 +36,5 @@ export enum DefaultMessage {
 
 export interface ErrorResponse {
   errors: Array<unknown | Joi.ValidationErrorItem | CustomError>;
-  statusCode?: number; // I've added this as an example how to expand error responce with some custom metadata
+  statusCode?: number; // I've added this as an example how to expand error response with some custom metadata
 }

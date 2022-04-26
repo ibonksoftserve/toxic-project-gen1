@@ -3,7 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { routes } from '../modules';
 import { configs } from '../config';
-import { requestLogger } from './request-logger';
+import { requestLogger } from '../middlewares/request-logger';
+import { errorsHandler } from '../middlewares/errors-handler';
 
 export const initExpress = async (app: Express): Promise<void> => {
 
@@ -14,4 +15,6 @@ export const initExpress = async (app: Express): Promise<void> => {
   app.use(requestLogger);
 
   app.use(configs.apiPrefix, routes());
+
+  app.use(errorsHandler);
 }

@@ -15,7 +15,7 @@ export enum ErrorType {
   BAD_TOKEN = 'BadTokenError',
   TOKEN_EXPIRED = 'TokenExpiredError',
   UNAUTHORIZED = 'AuthFailureError',
-  SERVER = 'ServerlError',
+  SERVER = 'ServerError',
   NOT_FOUND = 'NotFoundError',
   BAD_REQUEST = 'BadRequestError',
   FORBIDDEN = 'ForbiddenError',

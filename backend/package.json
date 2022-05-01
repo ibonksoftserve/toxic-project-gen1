@@ -6,7 +6,13 @@
     "watch": "nodemon",
     "build": "tsc",
     "start": "npm run build && node build/app.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint-back": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.36",
@@ -28,7 +34,6 @@
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",

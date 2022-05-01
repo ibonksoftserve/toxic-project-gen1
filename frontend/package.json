@@ -33,8 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-front": "lint-staged",
-    "lint": "eslint 'src/**'",
-    "prepare": "cd ../ && husky install ./frontend/.husky"
+    "lint": "eslint 'src/**'"
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [

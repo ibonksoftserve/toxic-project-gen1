@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import { NotFoundError } from "../../core/api.errors";
-import { SuccessResponse } from "../../core/api.response";
-import { IUser } from "./user.model";
-import { IUserResponse, IUserService } from "./user.service";
+import { Request, Response } from 'express';
+import { NotFoundError } from '../../core/api.errors';
+import { SuccessResponse } from '../../core/api.response';
+import { IUser } from './user.model';
+import { IUserResponse, IUserService } from './user.service';
 import { UpdateResult, DeleteResult } from 'mongodb';
 
 interface IUserControllerProps {
@@ -19,7 +19,7 @@ export class UserController {
 
   public async getAllUsers(req: Request, res: Response): Promise<Response> {
     const users = await this.UserService.getAllUsers();
-    return new SuccessResponse<IUserResponse[]>(users).send(res)
+    return new SuccessResponse<IUserResponse[]>(users).send(res);
   }
 
   public async getUser(req: Request, res: Response): Promise<Response> {
@@ -30,13 +30,13 @@ export class UserController {
       throw new NotFoundError('user');
     }
 
-    return new SuccessResponse<IUserResponse>(user).send(res)
+    return new SuccessResponse<IUserResponse>(user).send(res);
   }
 
   public async createUser(req: Request, res: Response): Promise<Response> {
     const body: IUser = req.body;
     const result = await this.UserService.createUser(body);
-    return new SuccessResponse<IUserResponse>(result).send(res)
+    return new SuccessResponse<IUserResponse>(result).send(res);
   }
 
   public async updateUser(req: Request, res: Response): Promise<Response> {
@@ -48,7 +48,7 @@ export class UserController {
       throw new NotFoundError('user');
     }
 
-    return new SuccessResponse<UpdateResult>(updatedUser).send(res)
+    return new SuccessResponse<UpdateResult>(updatedUser).send(res);
   }
 
   public async deleteUser(req: Request, res: Response): Promise<Response> {
@@ -59,6 +59,6 @@ export class UserController {
       throw new NotFoundError('user');
     }
 
-    return new SuccessResponse<DeleteResult>(deletedUser).send(res)
+    return new SuccessResponse<DeleteResult>(deletedUser).send(res);
   }
 }

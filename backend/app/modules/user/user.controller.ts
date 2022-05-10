@@ -6,7 +6,7 @@ import { IUserResponse, IUserService } from './user.service';
 import { UpdateResult, DeleteResult } from 'mongodb';
 
 interface IUserControllerProps {
-  UserService: IUserService
+  UserService: IUserService;
 }
 
 export class UserController {

@@ -5,7 +5,14 @@
   "scripts": {
     "watch": "nodemon",
     "build": "tsc",
-    "start": "npm run build && node build/app.js"
+    "start": "npm run build && node build/app.js",
+    "lint": "eslint .",
+    "lint-back": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.36",
@@ -18,7 +25,18 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^16.11.11",
     "@types/on-finished": "^2.3.1",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "lint-staged": "^12.4.1",
     "nodemon": "^2.0.15",
+    "prettier": "^2.6.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   },
@@ -31,6 +49,7 @@
     "joi": "^17.6.0",
     "lodash": "^4.17.21",
     "mongoose": "^6.0.15",
-    "on-finished": "^2.4.1"
+    "on-finished": "^2.4.1",
+    "winston": "^3.7.2"
   }
 }

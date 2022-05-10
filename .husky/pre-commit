@@ -3,3 +3,6 @@
 
 cd frontend
 npm run lint-front
+
+cd ../backend
+npm run lint-back

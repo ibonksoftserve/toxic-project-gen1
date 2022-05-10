@@ -15,21 +15,21 @@ const UserSchema = new Schema({
   email: {
     type: String,
     require: true,
-    trim: true
+    trim: true,
   },
   first_name: {
     type: String,
     require: true,
-    trim: true
+    trim: true,
   },
   last_name: {
     type: String,
     require: true,
-    trim: true
-  }
+    trim: true,
+  },
 }, {
   collection: COLLECTION_NAME,
-  autoIndex: false
+  autoIndex: false,
 });
 
 export const UserModel = model<IUser>(DOCUMENT_NAME, UserSchema);

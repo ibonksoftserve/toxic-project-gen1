@@ -5,7 +5,7 @@ import {
   ForbiddenErrorResponse,
   NotFoundErrorResponse,
   ServerErrorResponse,
-  UnauthorizedErrorResponse
+  UnauthorizedErrorResponse,
 } from './api.response';
 
 export abstract class ApiError extends Error {
@@ -16,18 +16,18 @@ export abstract class ApiError extends Error {
 
   public static handleError(error: ApiError, res: Response): Response {
     switch (error.message) {
-      case ErrorType.BAD_REQUEST:
-        return new BadRequestErrorResponse(error.response).send(res);
-      case ErrorType.FORBIDDEN:
-        return new ForbiddenErrorResponse(error.response).send(res);
-      case ErrorType.BAD_TOKEN:
-      case ErrorType.TOKEN_EXPIRED:
-      case ErrorType.UNAUTHORIZED:
-        return new UnauthorizedErrorResponse(error.response).send(res);
-      case ErrorType.NOT_FOUND:
-        return new NotFoundErrorResponse(error.response).send(res);
-      default:
-        return new ServerErrorResponse(error.response).send(res);
+    case ErrorType.BAD_REQUEST:
+      return new BadRequestErrorResponse(error.response).send(res);
+    case ErrorType.FORBIDDEN:
+      return new ForbiddenErrorResponse(error.response).send(res);
+    case ErrorType.BAD_TOKEN:
+    case ErrorType.TOKEN_EXPIRED:
+    case ErrorType.UNAUTHORIZED:
+      return new UnauthorizedErrorResponse(error.response).send(res);
+    case ErrorType.NOT_FOUND:
+      return new NotFoundErrorResponse(error.response).send(res);
+    default:
+      return new ServerErrorResponse(error.response).send(res);
     }
   }
 }

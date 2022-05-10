@@ -11,6 +11,8 @@ export interface IUserService {
   UserModel: IUserModelType;
   getAllUsers: () => Promise<IUserResponse[]>;
   getUserById: (id: string) => Promise<IUserResponse | null>;
+  getUserByEmail: (email: string) => Promise<IUserResponse | null>;
+  getUserByNickname: (nickname: string) => Promise<IUserResponse | null>;
   createUser: (data: IUser) => Promise<IUserResponse>;
   updateUser: (id: string, data: IUser) => Promise<UpdateResult | null>;
   deleteUser: (id: string) => Promise<DeleteResult | null>;
@@ -29,6 +31,14 @@ export class UserService implements IUserService {
 
   public async getUserById(id: string): Promise<IUserResponse | null> {
     return this.UserModel.findOne({ _id: id });
+  }
+
+  public async getUserByEmail(email: string): Promise<IUserResponse | null> {
+    return this.UserModel.findOne({ email });
+  }
+  
+  public async getUserByNickname(nickname: string): Promise<IUserResponse | null> {
+    return this.UserModel.findOne({ nickname });
   }
 
   public async createUser(data: IUser): Promise<IUserResponse> {

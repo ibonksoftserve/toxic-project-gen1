@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { NotFoundError } from "../../core/api.errors";
+import { EmailExistsError, NotFoundError, UsernameExistsError } from "../../core/api.errors";
 import { SuccessResponse } from "../../core/api.response";
-import { IUser } from "./user.model";
+import { IUser, AccountStatus } from "./user.model";
 import { IUserResponse, IUserService } from "./user.service";
 import { UpdateResult, DeleteResult } from 'mongodb';
 
@@ -35,23 +35,53 @@ export class UserController {
 
   public async createUser(req: Request, res: Response): Promise<Response> {
     const body: IUser = req.body;
+    const { email, nickname } = body;
+    const isUserExistsByEmail = await this.UserService.getUserByEmail(email);
+    const isUserExistsByNickname = await this.UserService.getUserByNickname(nickname);
+
+    if(isUserExistsByEmail) {
+      throw new EmailExistsError('email');
+    }
+
+    if(isUserExistsByNickname) {
+      throw new UsernameExistsError('username')
+    }
+    
     const result = await this.UserService.createUser(body);
-    return new SuccessResponse<IUserResponse>(result).send(res)
+    return new SuccessResponse<IUserResponse>(result).send(res);
   }
 
   public async updateUser(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const body = req.body;
     const updatedUser = await this.UserService.updateUser(id, body);
-
+    console.log(req.params)
     if (!updatedUser || !updatedUser.matchedCount) {
       throw new NotFoundError('user');
     }
-
+    
     return new SuccessResponse<UpdateResult>(updatedUser).send(res)
   }
 
   public async deleteUser(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+    const body = req.body;
+    const updatedUser = await this.UserService.updateUser(
+        id, 
+        {
+          ...body, 
+          account_status: AccountStatus.DELETED,
+          account_status_change_date: Date.now(),
+        }
+      );
+    if (!updatedUser || !updatedUser.matchedCount) {
+      throw new NotFoundError('user');
+    }
+    
+    return new SuccessResponse<UpdateResult>(updatedUser).send(res)
+  }
+
+  public async deleteUserPermanently(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const deletedUser = await this.UserService.deleteUser(id);
 

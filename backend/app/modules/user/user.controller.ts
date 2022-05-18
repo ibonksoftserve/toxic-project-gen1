@@ -55,7 +55,7 @@ export class UserController {
     const { id } = req.params;
     const body = req.body;
     const updatedUser = await this.UserService.updateUser(id, body);
-    console.log(req.params)
+
     if (!updatedUser || !updatedUser.matchedCount) {
       throw new NotFoundError('user');
     }
@@ -79,16 +79,5 @@ export class UserController {
     }
     
     return new SuccessResponse<UpdateResult>(updatedUser).send(res)
-  }
-
-  public async deleteUserPermanently(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
-    const deletedUser = await this.UserService.deleteUser(id);
-
-    if (!deletedUser || !deletedUser.deletedCount) {
-      throw new NotFoundError('user');
-    }
-
-    return new SuccessResponse<DeleteResult>(deletedUser).send(res)
   }
 }

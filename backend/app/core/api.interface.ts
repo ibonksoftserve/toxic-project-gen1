@@ -7,7 +7,7 @@ export enum StatusCode {
   UNAUTHORIZED = 401,
   FORBIDDEN = 403,
   NOT_FOUND = 404,
-  USER_EXISTS = 409,
+  RESOURCE_EXISTS = 409,
   SERVER = 500,
 }
 
@@ -20,7 +20,7 @@ export enum ErrorType {
   NOT_FOUND = 'NotFoundError',
   BAD_REQUEST = 'BadRequestError',
   FORBIDDEN = 'ForbiddenError',
-  USER_EXISTS = 'UserExistingError',
+  RESOURCE_EXISTS = 'ResourceExistsError',
 }
 
 export interface CustomError {

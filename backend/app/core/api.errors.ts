@@ -76,12 +76,12 @@ export class NotFoundError extends ApiError {
 
 export class UsernameExistsError extends ApiError {
   constructor(resource: string, message: string = DefaultMessage.username_exists) {
-    super(ErrorType.USER_EXISTS, { errors: [{ resource, message }] });
+    super(ErrorType.RESOURCE_EXISTS, { errors: [{ resource, message }] });
   }
 }
 
 export class EmailExistsError extends ApiError {
   constructor(resource: string, message: string = DefaultMessage.email_exists) {
-    super(ErrorType.NOT_FOUND, { errors: [{ resource, message }] });
+    super(ErrorType.RESOURCE_EXISTS, { errors: [{ resource, message }] });
   }
 }

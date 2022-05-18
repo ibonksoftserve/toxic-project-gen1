@@ -38,14 +38,6 @@ export default (app: Router) => {
     })
   );
 
-  route.patch('/user/delete/:id/',
-    validator(userSchema.userId, ValidationSource.PARAM),
-    validator(userSchema.userUpdate, ValidationSource.BODY),
-    asyncHandler(async (req, res) => {
-      return controller.updateUser(req, res);
-    })
-  );
-
   route.delete('/user/:id',
     validator(userSchema.userId, ValidationSource.PARAM),
     asyncHandler(async (req, res) => {

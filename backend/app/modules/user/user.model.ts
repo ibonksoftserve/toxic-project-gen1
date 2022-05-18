@@ -107,13 +107,14 @@ const UserSchema = new Schema({
   autoIndex: false
 });
 
-UserSchema.pre('save', function(){
+UserSchema.pre('save', function(next){
   if(this.isNew) {
     this.created_date = Date.now();
   }
-  else {
+  else if(this.isModified) {
     this.updated_date = Date.now();
   }
+  next();
 });
 
 

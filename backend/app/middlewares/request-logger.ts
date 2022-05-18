@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response } from "express";
-import onFinished from "on-finished";
+import { NextFunction, Request, Response } from 'express';
+import onFinished from 'on-finished';
+import logger from '../core/logger';
 
 export const requestLogger = (req: Request, res: Response, next: NextFunction) => {
   const startTime = new Date().getMilliseconds();
@@ -9,8 +10,8 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
     line += `| ${new Date().getMilliseconds() - startTime} ms |`;
     line += `| Status Code ${res.statusCode} |`;
 
-    console.log(line);
+    logger.info(line);
   });
 
   next();
-}
+};

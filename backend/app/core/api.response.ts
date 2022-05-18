@@ -1,5 +1,5 @@
-import { Response } from "express";
-import { ErrorResponse, StatusCode } from "./api.interface";
+import { Response } from 'express';
+import { ErrorResponse, StatusCode } from './api.interface';
 
 abstract class ApiResponse<T> {
   constructor(protected statusCode: number, protected data: T) { }

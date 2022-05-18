@@ -7,4 +7,4 @@ export const routes = (): Router => {
   user(app);
 
   return app;
-}
+};

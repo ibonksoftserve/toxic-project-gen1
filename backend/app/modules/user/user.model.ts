@@ -43,7 +43,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   password: {
     type: String,
@@ -104,7 +104,7 @@ const UserSchema = new Schema({
   }
 }, {
   collection: COLLECTION_NAME,
-  autoIndex: false
+  autoIndex: false,
 });
 
 UserSchema.pre('save', function(next){

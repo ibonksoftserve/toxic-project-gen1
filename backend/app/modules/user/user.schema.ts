@@ -25,7 +25,7 @@ export default {
     is_guest: Joi.boolean().optional(),
   }),
   userId: Joi.object({
-    id: JoiObjectId().required()
+    id: JoiObjectId().required(),
   }),
   userUpdate: Joi.object({
     email: Joi.string().optional().email(),

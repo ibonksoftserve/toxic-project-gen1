@@ -3,7 +3,7 @@ import { EmailExistsError, NotFoundError, UsernameExistsError } from "../../core
 import { SuccessResponse } from "../../core/api.response";
 import { IUser, AccountStatus } from "./user.model";
 import { IUserResponse, IUserService } from "./user.service";
-import { UpdateResult, DeleteResult } from 'mongodb';
+import { UpdateResult } from 'mongodb';
 
 interface IUserControllerProps {
   UserService: IUserService
@@ -19,7 +19,7 @@ export class UserController {
 
   public async getAllUsers(req: Request, res: Response): Promise<Response> {
     const users = await this.UserService.getAllUsers();
-    return new SuccessResponse<IUserResponse[]>(users).send(res)
+    return new SuccessResponse<IUserResponse[]>(users).send(res);
   }
 
   public async getUser(req: Request, res: Response): Promise<Response> {
@@ -30,7 +30,7 @@ export class UserController {
       throw new NotFoundError('user');
     }
 
-    return new SuccessResponse<IUserResponse>(user).send(res)
+    return new SuccessResponse<IUserResponse>(user).send(res);
   }
 
   public async createUser(req: Request, res: Response): Promise<Response> {
@@ -59,14 +59,14 @@ export class UserController {
     if (!updatedUser || !updatedUser.matchedCount) {
       throw new NotFoundError('user');
     }
-    
-    return new SuccessResponse<UpdateResult>(updatedUser).send(res)
+
+    return new SuccessResponse<UpdateResult>(updatedUser).send(res);
   }
 
   public async deleteUser(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const body = req.body;
-    const updatedUser = await this.UserService.updateUser(
+    const deletedUser = await this.UserService.updateUser(
         id, 
         {
           ...body, 
@@ -74,10 +74,10 @@ export class UserController {
           account_status_change_date: Date.now(),
         }
       );
-    if (!updatedUser || !updatedUser.matchedCount) {
+    if (!deletedUser || !deletedUser.matchedCount) {
       throw new NotFoundError('user');
     }
     
-    return new SuccessResponse<UpdateResult>(updatedUser).send(res)
+    return new SuccessResponse<UpdateResult>(deletedUser).send(res)
   }
 }

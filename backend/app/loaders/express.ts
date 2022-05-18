@@ -17,4 +17,4 @@ export const initExpress = async (app: Express): Promise<void> => {
   app.use(configs.apiPrefix, routes());
 
   app.use(errorsHandler);
-}
+};

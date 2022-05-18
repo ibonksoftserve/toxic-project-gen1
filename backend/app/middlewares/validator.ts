@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 import { BadRequestError } from '../core/api.errors';
+import logger from '../core/logger';
 
 
 export enum ValidationSource {
@@ -13,7 +14,7 @@ export enum ValidationSource {
 export default (schema: Joi.ObjectSchema, source: ValidationSource = ValidationSource.BODY) => (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ): void => {
   try {
     const { error } = schema.validate(req[source], { abortEarly: false });
@@ -22,7 +23,10 @@ export default (schema: Joi.ObjectSchema, source: ValidationSource = ValidationS
 
     const { details } = error;
 
-    next(new BadRequestError<Joi.ValidationErrorItem>(removeDoubleQuotes(details)));
+    const err = new BadRequestError<Joi.ValidationErrorItem>(removeDoubleQuotes(details));
+
+    logger.error(err);
+    next(err);
   } catch (error) {
     next(error);
   }
@@ -33,6 +37,6 @@ export default (schema: Joi.ObjectSchema, source: ValidationSource = ValidationS
 const removeDoubleQuotes = (errors: Joi.ValidationErrorItem[]) => {
   return errors.map(error => ({
     ...error,
-    message: error.message.replace(/\"/g, '')
+    message: error.message.replace(/"/g, ''),
   }));
-}
+};

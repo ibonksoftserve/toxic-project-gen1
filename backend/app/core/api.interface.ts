@@ -7,6 +7,7 @@ export enum StatusCode {
   UNAUTHORIZED = 401,
   FORBIDDEN = 403,
   NOT_FOUND = 404,
+  RESOURCE_EXISTS = 409,
   SERVER = 500,
 }
 
@@ -19,6 +20,7 @@ export enum ErrorType {
   NOT_FOUND = 'NotFoundError',
   BAD_REQUEST = 'BadRequestError',
   FORBIDDEN = 'ForbiddenError',
+  RESOURCE_EXISTS = 'ResourceExistsError',
 }
 
 export interface CustomError {
@@ -31,7 +33,9 @@ export enum DefaultMessage {
   bad_token = 'Token is not valid',
   token_expired = 'Token is expired',
   forbidden = 'Permission denied',
-  auth_failed = 'Invalid Credentials'
+  auth_failed = 'Invalid Credentials',
+  username_exists = 'User with the same name exists',
+  email_exists = 'User with the same email exists',
 }
 
 export interface ErrorResponse {

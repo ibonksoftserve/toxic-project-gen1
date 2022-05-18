@@ -44,3 +44,9 @@ export class ServerErrorResponse extends ApiResponse<ErrorResponse> {
     super(StatusCode.SERVER, data);
   }
 }
+
+export class UserExistsErrorResponse extends ApiResponse<ErrorResponse> {
+  constructor(protected data: ErrorResponse) {
+    super(StatusCode.RESOURCE_EXISTS, data);
+  }
+}

@@ -30,7 +30,7 @@ export default (app: Router) => {
     })
   );
 
-  route.patch('/user/:id',
+  route.patch('/user/:id/',
     validator(userSchema.userId, ValidationSource.PARAM),
     validator(userSchema.userUpdate, ValidationSource.BODY),
     asyncHandler(async (req, res) => {

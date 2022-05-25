@@ -3,9 +3,14 @@ pipeline {
   agent  { node { label 'jenkins-slave' } }
 
   stages {
-      stage("OwnStage") {
+      stage("Build project") {
           steps {
               sh "npm run build-app:dev"
+          }
+      }
+       stage("Start project") {
+          steps {
+              sh "npm run docker-start:dev"
           }
       }
   }

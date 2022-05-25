@@ -10,6 +10,7 @@
     "docker-start:frontend": "docker-compose -f docker-compose.dev.yml up frontend",
     "docker-start:backend": "docker-compose -f docker-compose.dev.yml up backend",
     "docker-start:dev": "docker-compose -f docker-compose.dev.yml up",
+    "docker-start": "docker-compose -f docker-compose.dev.yml up -f",
     "install-packages": "npm run install:root && npm-run-all install:backend",
     "install:root": "npm ci",
     "install:backend": "cd backend && npm ci",

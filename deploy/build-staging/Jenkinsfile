@@ -10,7 +10,7 @@ pipeline {
       }
        stage("Start project") {
           steps {
-              sh "npm run docker-start:dev"
+              sh "npm run docker-start"
           }
       }
   }

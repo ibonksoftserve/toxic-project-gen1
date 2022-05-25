@@ -1,7 +1,8 @@
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
+import { configs } from '../../config';
 import { createLogger, transports, format } from 'winston';
-import { configs } from '../config';
+
 const { timestamp, combine, printf, colorize, errors, prettyPrint } = format;
 const TIMESTAMP_FORMAT = 'YYYY-MM-DD hh:mm:ss';
 

@@ -1,17 +1,17 @@
-version: "3.8"
+version: "3.3"
 
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: dev.Dockerfile
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-    volumes:
-      - /app/node_modules
-      - ./frontend:/app
-    ports:
-      - 3000:3000
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: dev.Dockerfile
+  #   environment:
+  #     CHOKIDAR_USEPOLLING: "true"
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./frontend:/app
+  #   ports:
+  #     - 3000:3000
 
   backend:
     build:
@@ -36,3 +36,10 @@ services:
     logging:
       driver: none
     command: mongod --replSet rsg3
+
+  mailcatcher:
+    image: schickling/mailcatcher:latest
+    restart: always
+    ports:
+      - 1080:1080
+      - 1025:1025

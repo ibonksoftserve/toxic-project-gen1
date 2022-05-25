@@ -4,5 +4,7 @@ import { UserService } from './user.service';
 
 
 export default () => {
-  return new UserController({ UserService: new UserService({ UserModel }) });
+  return new UserController({
+    UserService: new UserService({ UserModel }),
+  });
 };

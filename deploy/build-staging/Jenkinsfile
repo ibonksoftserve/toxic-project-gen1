@@ -5,7 +5,7 @@ pipeline {
   stages {
       stage("OwnStage") {
           steps {
-              sh "node ./test_jenkins.js"
+              sh "npm run build-app:dev"
           }
       }
   }

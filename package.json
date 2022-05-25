@@ -10,11 +10,11 @@
     "docker-start:frontend": "docker-compose -f docker-compose.dev.yml up frontend",
     "docker-start:backend": "docker-compose -f docker-compose.dev.yml up backend",
     "docker-start:dev": "docker-compose -f docker-compose.dev.yml up",
-    "install": "npm-run-all install:root install:backend install:frontend",
+    "install-packages": "npm run install:root && npm-run-all install:backend install:frontend",
     "install:root": "npm ci",
     "install:backend": "cd backend && npm ci",
     "install:frontend": "cd frontend && npm ci",
-    "build-app:dev": "npm run install && npm run docker-rebuild",
+    "build-app:dev": "npm run install-packages && npm run docker-rebuild",
     "prepare": "husky install"
   },
   "repository": {
